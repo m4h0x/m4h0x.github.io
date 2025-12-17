@@ -22,24 +22,24 @@ tags:
 今回はロードバランサーとしてHAProxyを使用した．また，HAProxy の手前にKeepalivedで仮想IPを立て、その仮想IPに対してHAProxyが待ち受けるといった構成にした．構成図は次の通りになる．
 ```mermaid
 flowchart LR
-    subgraph ClientSide[ ]
-        C[Client]
+    subgraph ClientSide
+        C["Client"]
     end
 
-    subgraph VIP[Keepalived<br/>Virtual IP]
-        V[VIP<br/>(192.168.1.100)]
+    subgraph VIP
+        V["VIP (192.168.1.100)"]
     end
 
-    subgraph LB[HAProxy Layer]
-        H1[HAProxy Node 1]
-        H2[HAProxy Node 2]
-        H3[HAProxy Node 3]
+    subgraph LB
+        H1["HAProxy Node 1"]
+        H2["HAProxy Node 2"]
+        H3["HAProxy Node 3"]
     end
 
-    subgraph CP[control-plane Nodes]
-        CP1[control-plane 1]
-        CP2[control-plane 2]
-        CP3[control-plane 3]
+    subgraph CP
+        CP1["control-plane 1"]
+        CP2["control-plane 2"]
+        CP3["control-plane 3"]
     end
 
     C --> V
